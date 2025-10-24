@@ -44,3 +44,7 @@ class MTCNNRecognizer():
         cv2.imshow('Face Detection Result', self.frame)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
+
+picture = MTCNNRecognizer("chinetown.png")
+results = picture.detect_faces()
+MTCNNRecognizer("chinetown.png").detection_callback()
