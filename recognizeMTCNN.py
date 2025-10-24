@@ -15,13 +15,6 @@ class MTCNNRecognizer():
             self.rgb_frame = None
             self.results = []
 
-    def image_verification(self):
-        if self.frame is None or self.frame.size == 0:
-            print(f'Error: the image - {self.img_path} failed verification')
-            return False
-        else:
-             return True
-        
               
     def detect_faces(self):
         return self.results
