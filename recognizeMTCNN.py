@@ -14,8 +14,7 @@ class MTCNNRecognizer():
         else:
             self.rgb_frame = None
             self.results = []
-
-              
+   
     def detect_faces(self):
         return self.results
         

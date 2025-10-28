@@ -3,35 +3,34 @@ import numpy as np
 import mediapipe as mp
 
 
-class DetectingFingers():
-    def __init__(self, index: int = None):
-        print("Initializing the camera...")
-        
-        def find_camera():
-                camera_test = False   
-                camera_index = 0  
-                while True:
-                    camera_found = False 
-                    for backend in [cv2.CAP_ANY, cv2.CAP_DSHOW]:
-                        cap = cv2.VideoCapture(camera_index, backend)
-                        if cap.isOpened():
-                            camera_found = True
-                            camera_test = True
-                        else:
-                            cap.release()
-                            break
-                    if camera_found:
-                        camera_index += 1
+class DetectorgFingers():
+    def find_camera():
+        is_working = True
+        camera_test = False   
+        camera_index = 0 
+        camera_indexes = [] 
+        while is_working:
+            camera_found = False 
+            for backend in [cv2.CAP_ANY, cv2.CAP_DSHOW]:
+                with cv2.VideoCapture(camera_index, backend) as cap:
+                    if cap.isOpened():
+                        camera_found = True
+                        camera_test = True                      
                         
-                    if not camera_found:
-                            break
+            if camera_found:
+                camera_index
+                camera_index += 1
                 
-                    if not camera_test:
-                        return 
-
-                    return list(range(camera_index))
+            else:
+                is_working = False
         
-        available_cameras = find_camera()
+            if not camera_test:
+                return 
+
+            return list(range(camera_index))
+    
+    def __init__(self, index: int = None):
+        available_cameras = self.find_camera()
     
         if index is not None:
             self.cap = cv2.VideoCapture(index)
@@ -178,4 +177,7 @@ class DetectingFingers():
                 break
         
         self.cap.release()
-        cv2.destroyAllWindows()   
+        cv2.destroyAllWindows() 
+
+if __name__ == '__main__':
+    print([cv2.CAP_ANY, cv2.CAP_DSHOW])
