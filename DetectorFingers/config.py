@@ -1,0 +1,7 @@
+class DetectorConfig:
+    FRAME_WIDTH = 640
+    FRAME_HEIGHT = 480
+    FPS = 30
+    MAX_CAMERAS_TO_CHECK = 4
+    HAND_CONFIDENCE = 0.7
+    MAX_HANDS = 2
